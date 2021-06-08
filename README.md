@@ -38,7 +38,7 @@
 
  ## ChangeLog
  ### 0.0.4
- First launch of ByteBrew SDK availible for Unity Developers
+ - First launch of ByteBrew SDK availible for Unity Developers
 
 
 

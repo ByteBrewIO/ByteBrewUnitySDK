@@ -47,6 +47,11 @@ App Tracking Transparency Handler:
 
 
  ## ChangeLog
+ ### 0.0.5
+ - Update to ByteBrew Unity SDK
+ - Fixes:
+    - Android - Ability to test your game in Unity Editor without ByteBrew Initializing
+    - iOS - Ability to test your game in Unity Editor without ByteBrew Initializing
  ### 0.0.4
  - First launch of ByteBrew SDK availible for Unity Developers
 

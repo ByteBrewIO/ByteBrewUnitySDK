@@ -8,6 +8,9 @@ Real-Time Analytics:
  - Engagement Analytics: Automatically start tracking your game’s key performance indicators such as new user events, DAU, session length, playtime, and retention reporting
  - Custom Filtering: Breakdown and segment your players using custom filters such as; device type, geography, build version, and date ranges
 
+Push Notifications:
+ - Send Cross-Platform Cloud Notifications to your players around the globe with ByteBrew's Push Notifications.
+
 Player Progression:
  - Game level statistics tracking to breakdown level wins, fails, scores and more.
  - Progression funneling system: Monitor your user's progression and set up custom event funnels to visually track how your player's progression through your games. 
@@ -40,6 +43,9 @@ App Tracking Transparency Handler:
 
  Create your ByteBrew account to access the [dashboard](https://dashboard.bytebrew.io/register), or if you do have an account login [here](https://dashboard.bytebrew.io/login).
 
+## Updating The SDK
+Remove the current SDK "ByteBrewSDK" from your Assets folder.
+Then download the Unity package from this github to install straight into your project, and re-input your SDK Keys.
 
 
  ## Community
@@ -47,6 +53,22 @@ App Tracking Transparency Handler:
 
 
  ## ChangeLog
+ ### 0.0.6
+ - Update to ByteBrew Unity SDK
+ - Additions:
+    - Push Notifications: Launch of Push Notifications in ByteBrew with a one line of code integration in the SDK! Method "StartPushNotifications".
+    - Custom User Data Attributes: Add Key-Value Pair attributes to your user for segmentation use. Method name "SetCustomUserDataAttribute".
+    - Remote Config Read Check: New method called "HasRemoteConfigsBeenSet" to check whether remote configs have been retrieved without a callback, boolean will return.
+    - Get User ID: Ability to retrieve the ByteBrew User ID for your reference, mostly to use for push notifications. Method name "GetUserID".
+ - Fixes:
+    - Unity SDK - Fix for prefab not saving correctly in scene when adding
+    - Unity SDK - Spelling Error on IAP Purchase Tracking method.
+- Changes:
+    -Unity SDK - Updated with new method for "TrackAdEvent" which utilizes a enum value instead of string for placementType parameter. Future ByteBrew SDKs will remove the older version of "TrackAdEvent".
+- Notes:
+    - Checkout documentation for further use of Push Notifications and more.
+    - To Properly update the SDK, make sure to remove the whole "ByteBrewSDK" folder and reimport the new SDK, and don't forget to re-input your SDK Keys.
+
  ### 0.0.5
  - Update to ByteBrew Unity SDK
  - Fixes:

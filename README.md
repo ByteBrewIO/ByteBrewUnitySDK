@@ -53,6 +53,15 @@ Then download the Unity package from this github to install straight into your p
 
 
  ## ChangeLog
+ ### 0.0.6.1
+ - Update to ByteBrew Unity SDK
+ - Fixes:
+    - Unity Android SDK - Fix for "TrackGoogleInAppPurchaseEvent" to parse transaction receipt.
+ - Changes:
+    - SDK change for Android with Google ADID Policy Compliance Update.
+ - Notes:
+    - To Properly update the SDK, make sure to remove the whole "ByteBrewSDK" folder and reimport the new SDK, and don't forget to re-input your SDK Keys.
+
  ### 0.0.6
  - Update to ByteBrew Unity SDK
  - Additions:

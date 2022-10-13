@@ -53,6 +53,15 @@ Then download the Unity package from this github to install straight into your p
 
 
  ## ChangeLog
+  ### 0.0.9
+ - Update to ByteBrew Unity SDK
+ - Updates:
+    - Minor updates to code(android).
+    - Added error on run if the SDK Key or GameID input is empty.
+    - Added IsByteBrewInitialized method.
+ - Notes:
+    - To Properly update the SDK, make sure to remove the whole "ByteBrewSDK" folder and reimport the new SDK, and don't forget to re-input your SDK Keys.
+ 
  ### 0.0.8
  - Update to ByteBrew Unity SDK
  - Updates:

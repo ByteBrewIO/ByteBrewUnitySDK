@@ -53,7 +53,16 @@ Then download the Unity package from this github to install straight into your p
 
 
  ## ChangeLog
-  ### 0.0.9
+### 0.1.0
+ - Update to ByteBrew Unity SDK
+ - Fixes:
+    - Minor dependency fixes
+ - Updates:
+    - Update for new A/B Testing features and fixes.
+ - Notes:
+    - To Properly update the SDK, make sure to remove the whole "ByteBrewSDK" folder and reimport the new SDK, and don't forget to re-input your SDK Keys. 
+
+### 0.0.9
  - Update to ByteBrew Unity SDK
  - Updates:
     - Minor updates to code(android).

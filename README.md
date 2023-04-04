@@ -53,6 +53,15 @@ Then download the Unity package from this github to install straight into your p
 
 
  ## ChangeLog
+### 0.1.2
+ - Update to ByteBrew Unity SDK
+ - Updates:
+    - Minor Android & iOS updates.
+    - Updates for Apple Search Ads, and Google Ads Attribution.
+    - Android - lowered minimum Android API level to API 19 (Android 4.4).
+ - Notes:
+    - To Properly update the SDK, make sure to remove the whole "ByteBrewSDK" folder and reimport the new SDK, and don't forget to re-input your SDK Keys. 
+
 ### 0.1.1
  - Update to ByteBrew Unity SDK
  - Updates:

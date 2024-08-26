@@ -1,0 +1,12 @@
+{
+    "name": "ByteBrewSDK.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e672d26aa443c204ba3c4deb0005c8f8"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "autoReferenced": true,
+    "noEngineReferences": false
+}

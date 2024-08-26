@@ -1,0 +1,29 @@
+﻿<dependencies>
+
+  <androidPackages>
+    <repositories>
+      <repository>https://repo.maven.apache.org/maven2</repository>
+      <repository>https://maven.google.com</repository>
+    </repositories>
+    <androidPackage spec="com.android.support:appcompat-v7:28.0.0">
+      <repositories>
+        <repository>https://maven.google.com</repository>
+      </repositories>
+    </androidPackage>
+    <androidPackage spec="com.google.android.gms:play-services-ads-identifier:17.0.0">
+      <repositories>
+        <repository>https://maven.google.com</repository>
+      </repositories>
+    </androidPackage>
+    <androidPackage spec="com.android.installreferrer:installreferrer:2.2">
+      <repositories>
+        <repository>https://maven.google.com</repository>
+      </repositories>
+    </androidPackage>
+    <androidPackage spec="com.google.firebase:firebase-messaging:23.0.0">
+      <repositories>
+        <repository>https://maven.google.com</repository>
+      </repositories>
+    </androidPackage>
+  </androidPackages>
+</dependencies>

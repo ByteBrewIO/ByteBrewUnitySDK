@@ -40,7 +40,7 @@ namespace ByteBrewSDK {
         }
 
         private static string DictionaryToString(Dictionary<string, string> dictionary) {
-            //format is key1=value1;key2=value2;key3=value3
+            //format is key1=value1;key2=value2;key3=value3;
             string result = "";
             if (dictionary == null) {
                 return result;
@@ -48,10 +48,7 @@ namespace ByteBrewSDK {
             foreach (KeyValuePair<string, string> entry in dictionary) {
                 result += entry.Key + "=" + entry.Value + ";";
             }
-            //remove the last semicolon
-            if (result.Length > 0) {
-                result = result.Remove(result.Length - 1);
-            }
+            //keep the last semicolon, it's required
             return result;
         }
 

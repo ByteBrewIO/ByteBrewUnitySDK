@@ -36,6 +36,25 @@ public static class ByteBrewOnLoadPackageImportCredsHolder {
     }
 
     public static void SetSDKKeysToPlayerPrefs() {
+#if UNITY_CLOUD_BUILD
+        Debug.Log("Unity Cloud Build detected, skipping setting SDK keys to PlayerPrefs");
+        return;
+#endif
+
+        if (BBSettings == null) {
+            BBSettings = ByteBrewSettingsHandler.SettingsInstance;
+        }
+
+        if (BBSettings == null) {
+            return;
+        }
+
+        SetAndroidKeysToPlayerPrefs();
+        SetIOSKeysToPlayerPrefs();
+        SetWebKeysToPlayerPrefs();
+    }
+
+    public static void SetAndroidKeysToPlayerPrefs() {
         if (BBSettings == null) {
             BBSettings = ByteBrewSettingsHandler.SettingsInstance;
         }
@@ -49,11 +68,31 @@ public static class ByteBrewOnLoadPackageImportCredsHolder {
             PlayerPrefs.SetString(AndroidGameIDPlayerPrefsKey, BBSettings.androidGameID);
             PlayerPrefs.SetString(AndroidSDKKeyPlayerPrefsKey, BBSettings.androidSDKKey);
         }
+    }
+
+    public static void SetIOSKeysToPlayerPrefs() {
+        if (BBSettings == null) {
+            BBSettings = ByteBrewSettingsHandler.SettingsInstance;
+        }
+
+        if (BBSettings == null) {
+            return;
+        }
 
         if (BBSettings.iosEnabled) {
             PlayerPrefs.SetInt(IOSEnabledPlayerPrefsKey, 1);
             PlayerPrefs.SetString(IOSGameIDPlayerPrefsKey, BBSettings.iosGameID);
             PlayerPrefs.SetString(IOSSDKKeyPlayerPrefsKey, BBSettings.iosSDKKey);
+        }
+    }
+
+    public static void SetWebKeysToPlayerPrefs() {
+        if (BBSettings == null) {
+            BBSettings = ByteBrewSettingsHandler.SettingsInstance;
+        }
+
+        if (BBSettings == null) {
+            return;
         }
 
         if (BBSettings.webEnabled) {

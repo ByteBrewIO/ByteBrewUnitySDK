@@ -82,19 +82,28 @@ namespace ByteBrewSDK
             return byteBrewHandler.CallStatic<string>("GetRemoteConfigForKey", key, defaultValue);
         }
 
+        public static AndroidJavaObject GetContext() 
+        {
+            try {
+                AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+                AndroidJavaObject activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+                AndroidJavaObject context = activity.Call<AndroidJavaObject>("getApplicationContext");
+                return context;
+            } catch {
+                return null;
+            }
+        }
+
         public static void DisableTracking()
         {
             if(byteBrewHandler == null)
             {
                 byteBrewHandler = new AndroidJavaObject("com.bytebrew.bytebrewlibrary.ByteBrewHandler");
-                AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-                AndroidJavaObject activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-                AndroidJavaObject context = activity.Call<AndroidJavaObject>("getApplicationContext");
-                byteBrewHandler.Call("StopTracking", context);
+                byteBrewHandler.Call("StopTracking", GetContext());
             }
             else
             {
-                byteBrewHandler.Call("StopTracking", null);
+                byteBrewHandler.Call("StopTracking", GetContext());
             }
 
         }
@@ -104,14 +113,11 @@ namespace ByteBrewSDK
             if (byteBrewHandler == null)
             {
                 byteBrewHandler = new AndroidJavaObject("com.bytebrew.bytebrewlibrary.ByteBrewHandler");
-                AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-                AndroidJavaObject activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-                AndroidJavaObject context = activity.Call<AndroidJavaObject>("getApplicationContext");
-                byteBrewHandler.Call("StartTracking", context);
+                byteBrewHandler.Call("StartTracking", GetContext());
             }
             else
             {
-                byteBrewHandler.Call("StartTracking", null);
+                byteBrewHandler.Call("StartTracking", GetContext());
             }
 
         }

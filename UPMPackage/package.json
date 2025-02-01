@@ -1,6 +1,6 @@
 {
     "name": "com.bytebrew.unitysdk",
-    "version": "0.1.7",
+    "version": "0.1.9",
     "displayName": "ByteBrewSDK",
     "description": "ByteBrew SDK for Unity. This package provides a simple way to integrate ByteBrew into your Unity project.",
     "hideInEditor": false,

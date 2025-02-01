@@ -8,7 +8,7 @@ namespace ByteBrewSDK
 {
     public class ByteBrew : MonoBehaviour
     {
-        public static readonly string SDK_VERSION = "0.1.8";
+        public static readonly string SDK_VERSION = "0.1.9";
 
         private static ByteBrew _instance;
 
@@ -230,6 +230,7 @@ namespace ByteBrewSDK
         /// <param name="progressionStatus">Type of progression (ex. Start, Fail...)</param>
         /// <param name="environment">The environment that the event is happening in (ex. Tutorial, Level)</param>
         /// <param name="stage">Stage or progression that the player is in (ex. GoldLevelArena, Level_1, tutorial_menu_purchase)</param>
+        [Obsolete("Progression events are legacy events and will be deprecated from the platform in upcoming releases. For enhanced analytical capabilities on the platform, make sure to implement custom events with sub-parameters.")]
         public static void NewProgressionEvent(ByteBrewProgressionTypes progressionStatus, string environment, string stage)
         {
 #if UNITY_EDITOR
@@ -250,6 +251,7 @@ namespace ByteBrewSDK
         /// <param name="environment">The environment that the event is happening in (ex. Tutorial, Level)</param>
         /// <param name="stage">Stage or progression that the player is in (ex. GoldLevelArena, Level_1, tutorial_menu_purchase)</param>
         /// <param name="value">Value that ties to an event (ex. 500, -300, Chainsaw) </param>
+        [Obsolete("Progression events are legacy events and will be deprecated from the platform in upcoming releases. For enhanced analytical capabilities on the platform, make sure to implement custom events with sub-parameters.")]
         public static void NewProgressionEvent(ByteBrewProgressionTypes progressionStatus, string environment, string stage, string value)
         {
 #if UNITY_EDITOR
@@ -269,6 +271,7 @@ namespace ByteBrewSDK
         /// <param name="environment">The environment that the event is happening in (ex. Tutorial, Level)</param>
         /// <param name="stage">Stage or progression that the player is in (ex. GoldLevelArena, Level_1, tutorial_menu_purchase)</param>
         /// <param name="value">Value that ties to an event could be postive for a reward or negative for a fail (ex. 500, -300) </param>
+        [Obsolete("Progression events are legacy events and will be deprecated from the platform in upcoming releases. For enhanced analytical capabilities on the platform, make sure to implement custom events with sub-parameters.")]
         public static void NewProgressionEvent(ByteBrewProgressionTypes progressionStatus, string environment, string stage, float value)
         {
 #if UNITY_EDITOR
@@ -305,6 +308,7 @@ namespace ByteBrewSDK
         /// </summary>
         /// <param name="adType">Placement type of the Ad. (ex. Interstitial, Reward)</param>
         /// <param name="adLocation">The location of the shown ad. (ex. shopOpen, levelFail...)</param>
+        [Obsolete("Upgrade to the newest version of the TrackAdEvent method in newer SDKs to send ad impressions with revenue parameters. This method version of the event will be deprecated in upcoming releases.")]
         public static void TrackAdEvent(ByteBrewAdTypes adType, string adLocation)
         {
 #if UNITY_EDITOR
@@ -324,6 +328,7 @@ namespace ByteBrewSDK
         /// <param name="adType">Placement type of the Ad. (ex. Interstitial, Reward)</param>
         /// <param name="adLocation">The location of the shown ad. (ex. shopOpen, levelFail...)</param>
         /// <param name="AdID">The Ad ID or Unit ID of the ad just shown</param>
+        [Obsolete("Upgrade to the newest version of the TrackAdEvent method in newer SDKs to send ad impressions with revenue parameters. This method version of the event will be deprecated in upcoming releases.")]
         public static void TrackAdEvent(ByteBrewAdTypes adType, string adLocation, string AdID)
         {
 #if UNITY_EDITOR
@@ -344,6 +349,7 @@ namespace ByteBrewSDK
         /// <param name="adLocation">The location of the shown ad. (ex. shopOpen, levelFail...)</param>
         /// <param name="AdID">The Ad ID or Unit ID of the ad just shown</param>
         /// <param name="adProvider">The provider of the Ad. (ex. AdMob, IronSource)</param>
+        [Obsolete("Upgrade to the newest version of the TrackAdEvent method in newer SDKs to send ad impressions with revenue parameters. This method version of the event will be deprecated in upcoming releases.")]
         public static void TrackAdEvent(ByteBrewAdTypes adType, string adLocation, string AdID, string adProvider)
         {
 #if UNITY_EDITOR
@@ -394,66 +400,6 @@ namespace ByteBrewSDK
 
             if(IsInitilized)
                 ByteBrew_Helper.NewTrackedAdEvent(adType.ToString(), adProvider, adUnitName, adLocation, revenue);
-#endif
-
-        }
-
-        /// <summary>
-        /// Track when a Ad is shown to the user
-        /// </summary>
-        /// <param name="placementType">Placement type of the Ad. (ex. Interstitial, Reward)</param>
-        /// <param name="adLocation">The location of the shown ad. (ex. shopOpen, levelFail...)</param>
-        [Obsolete("This method version will be removed in future SDKs of ByteBrew, please use any other TrackAdEvent SDK that use ByteBrewAdTypes instead of a string placementType.")]
-        public static void TrackAdEvent(string placementType, string adLocation)
-        {
-#if UNITY_EDITOR
-            Debug.Log("ByteBrew is in Editor Mode, not sending events");
-            return;
-#elif (UNITY_ANDROID) || (UNITY_IOS) || (UNITY_WEBGL)
-
-            if(IsInitilized)
-                ByteBrew_Helper.NewTrackedAdEvent(placementType, adLocation);
-#endif
-
-        }
-
-        /// <summary>
-        /// Track when a Ad is shown to the user
-        /// </summary>
-        /// <param name="placementType">Placement type of the Ad. (ex. Interstitial, Reward)</param>
-        /// <param name="adLocation">The location of the shown ad. (ex. shopOpen, levelFail...)</param>
-        /// <param name="AdID">The Ad ID or Unit ID of the ad just shown</param>
-        [Obsolete("This method version will be removed in future SDKs of ByteBrew, please use any other TrackAdEvent SDK that use ByteBrewAdTypes instead of a string placementType.")]
-        public static void TrackAdEvent(string placementType, string adLocation, string AdID)
-        {
-#if UNITY_EDITOR
-            Debug.Log("ByteBrew is in Editor Mode, not sending events");
-            return;
-#elif (UNITY_ANDROID) || (UNITY_IOS) || (UNITY_WEBGL)
-
-            if(IsInitilized)
-                ByteBrew_Helper.NewTrackedAdEvent(placementType, adLocation, AdID);
-#endif
-
-        }
-
-        /// <summary>
-        /// Track when a Ad is shown to the user
-        /// </summary>
-        /// <param name="placementType">Placement type of the Ad. (ex. Interstitial, Reward)</param>
-        /// <param name="adLocation">The location of the shown ad. (ex. shopOpen, levelFail...)</param>
-        /// <param name="AdID">The Ad ID or Unit ID of the ad just shown</param>
-        /// <param name="adProvider">The provider of the Ad. (ex. AdMob, IronSource)</param>
-        [Obsolete("This method version will be removed in future SDKs of ByteBrew, please use any other TrackAdEvent SDK that use ByteBrewAdTypes instead of a string placementType.")]
-        public static void TrackAdEvent(string placementType, string adLocation, string AdID, string adProvider)
-        {
-#if UNITY_EDITOR
-            Debug.Log("ByteBrew is in Editor Mode, not sending events");
-            return;
-#elif (UNITY_ANDROID) || (UNITY_IOS) || (UNITY_WEBGL)
-
-            if(IsInitilized)
-                ByteBrew_Helper.NewTrackedAdEvent(placementType, adLocation, AdID, adProvider);
 #endif
 
         }

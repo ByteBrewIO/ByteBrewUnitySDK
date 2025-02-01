@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -28,6 +28,18 @@ namespace ByteBrewSDK
             GUILayout.Label("ByteBrew App Settings", EditorStyles.boldLabel);
 
             GUILayout.Space(15f);
+
+            bool originalAndroidEnabled = manager.androidEnabled;
+            string originalAndroidGameID = manager.androidGameID;
+            string originalAndroidSDKKey = manager.androidSDKKey;
+
+            bool originalIOSEnabled = manager.iosEnabled;
+            string originalIOSGameID = manager.iosGameID;
+            string originalIOSSDKKey = manager.iosSDKKey;
+
+            bool originalWebEnabled = manager.webEnabled;
+            string originalWebGameID = manager.webGameID;
+            string originalWebSDKKey = manager.webSDKKey;
 
             if (!manager.androidEnabled)
             {
@@ -177,6 +189,24 @@ namespace ByteBrewSDK
 
             EditorUtility.SetDirty(manager);
             serializedObject.ApplyModifiedProperties();
+
+            if (originalAndroidEnabled != manager.androidEnabled
+                || originalAndroidGameID != manager.androidGameID
+                || originalAndroidSDKKey != manager.androidSDKKey) {
+                ByteBrewOnLoadPackageImportCredsHolder.SetAndroidKeysToPlayerPrefs();
+            }
+
+            if (originalIOSEnabled != manager.iosEnabled
+                || originalIOSGameID != manager.iosGameID
+                || originalIOSSDKKey != manager.iosSDKKey) {
+                ByteBrewOnLoadPackageImportCredsHolder.SetIOSKeysToPlayerPrefs();
+            }
+            
+            if (originalWebEnabled != manager.webEnabled
+                || originalWebGameID != manager.webGameID
+                || originalWebSDKKey != manager.webSDKKey) {
+                ByteBrewOnLoadPackageImportCredsHolder.SetWebKeysToPlayerPrefs();
+            }
         }
     }
 

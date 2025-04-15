@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEditor;
 
-[InitializeOnLoad]
 public static class ByteBrewOnLoadPackageImportCredsHolder {
     public static ByteBrewSettings BBSettings = null;
 
@@ -30,10 +29,6 @@ public static class ByteBrewOnLoadPackageImportCredsHolder {
 
     public static string WebGameID => PlayerPrefs.GetString(WebGameIDPlayerPrefsKey, "");
     public static string WebGameKey => PlayerPrefs.GetString(WebSDKKeyPlayerPrefsKey, "");
-
-    static ByteBrewOnLoadPackageImportCredsHolder() {
-        SetSDKKeysToPlayerPrefs();
-    }
 
     public static void SetSDKKeysToPlayerPrefs() {
 #if UNITY_CLOUD_BUILD

@@ -8,7 +8,7 @@ namespace ByteBrewSDK
 {
     public class ByteBrew : MonoBehaviour
     {
-        public static readonly string SDK_VERSION = "0.1.9.1";
+        public static readonly string SDK_VERSION = "0.2.0";
 
         private static ByteBrew _instance;
 
@@ -21,7 +21,9 @@ namespace ByteBrewSDK
 
         public static bool FirstTimeOpening = false;
 
+#pragma warning disable CS0067
         public static event Action<int> OnRequestTrackTransparencyFinished;
+#pragma warning restore CS0067
 
         public static event Action remoteConfigUpdated;
 
@@ -99,13 +101,13 @@ namespace ByteBrewSDK
         }
 #endif
 
-		/// <summary>
+        /// <summary>
         /// Add a custom Data Attribute to user
         /// </summary>
         /// <param name="key">Key name of the custom data</param>
-		/// <param name="value">String value of the custom data</param>
-		public static void SetCustomUserDataAttribute(string key, string value) 
-		{
+        /// <param name="value">String value of the custom data</param>
+        public static void SetCustomUserDataAttribute(string key, string value)
+        {
 #if UNITY_EDITOR
             Debug.Log("ByteBrew is in Editor Mode, not setting custom data... But you are calling it so it will work on a mobile environment.");
             return;
@@ -115,15 +117,15 @@ namespace ByteBrewSDK
                 ByteBrew_Helper.AddCustomDataPair(key, value);
 
 #endif
-		}
+        }
 
-		/// <summary>
+        /// <summary>
         /// Add a custom Data Attribute to user
         /// </summary>
         /// <param name="key">Key name of the custom data</param>
-		/// <param name="value">Double value of the custom data</param>
-		public static void SetCustomUserDataAttribute(string key, double value) 
-		{
+        /// <param name="value">Double value of the custom data</param>
+        public static void SetCustomUserDataAttribute(string key, double value)
+        {
 #if UNITY_EDITOR
             Debug.Log("ByteBrew is in Editor Mode, not setting custom data... But you are calling it so it will work on a mobile environment.");
             return;
@@ -133,15 +135,15 @@ namespace ByteBrewSDK
                 ByteBrew_Helper.AddCustomDataPair(key, value);
 
 #endif
-		}
+        }
 
-		/// <summary>
+        /// <summary>
         /// Add a custom Data Attribute to user
         /// </summary>
         /// <param name="key">Key name of the custom data</param>
-		/// <param name="value">Int value of the custom data</param>
-		public static void SetCustomUserDataAttribute(string key, int value) 
-		{
+        /// <param name="value">Int value of the custom data</param>
+        public static void SetCustomUserDataAttribute(string key, int value)
+        {
 #if UNITY_EDITOR
             Debug.Log("ByteBrew is in Editor Mode, not setting custom data... But you are calling it so it will work on a mobile environment.");
             return;
@@ -151,15 +153,15 @@ namespace ByteBrewSDK
                 ByteBrew_Helper.AddCustomDataPair(key, value);
 
 #endif
-		}
+        }
 
-		/// <summary>
+        /// <summary>
         /// Add a custom Data Attribute to user
         /// </summary>
         /// <param name="key">Key name of the custom data</param>
-		/// <param name="value">Boolean value of the custom data</param>
-		public static void SetCustomUserDataAttribute(string key, bool value) 
-		{
+        /// <param name="value">Boolean value of the custom data</param>
+        public static void SetCustomUserDataAttribute(string key, bool value)
+        {
 #if UNITY_EDITOR
             Debug.Log("ByteBrew is in Editor Mode, not setting custom data... But you are calling it so it will work on a mobile environment.");
             return;
@@ -169,7 +171,7 @@ namespace ByteBrewSDK
                 ByteBrew_Helper.AddCustomDataPair(key, value);
 
 #endif
-		}
+        }
 
         /// <summary>
         /// Add a custom event to be tracked in ByteBrew
@@ -482,10 +484,10 @@ namespace ByteBrewSDK
         public static void ValidateiOSInAppPurchaseEvent(string store, string currency, float amount, string itemID, string category, string receipt, Action<ByteBrewPurchaseData> purchaseResultData)
         {
             purchaseResult = null;
-			purchaseResult += purchaseResultData;
+            purchaseResult += purchaseResultData;
 #if UNITY_EDITOR
             Debug.Log("ByteBrew is in Editor Mode, not validating purchase, giving empty results.");
-			purchaseResult.Invoke(new ByteBrewPurchaseData());
+            purchaseResult.Invoke(new ByteBrewPurchaseData());
 #elif (UNITY_ANDROID) || (UNITY_IOS) || (UNITY_WEBGL)
 
             if (IsInitilized) {
@@ -508,7 +510,7 @@ namespace ByteBrewSDK
         public static void ValidateGoogleInAppPurchaseEvent(string store, string currency, float amount, string itemID, string category, string receipt, string signature, Action<ByteBrewPurchaseData> purchaseResultData)
         {
             purchaseResult = null;
-			purchaseResult += purchaseResultData;
+            purchaseResult += purchaseResultData;
 #if UNITY_EDITOR
             Debug.Log("ByteBrew is in Editor Mode, not validating purchase, giving empty results.");
             purchaseResult.Invoke(new ByteBrewPurchaseData());
@@ -592,9 +594,9 @@ namespace ByteBrewSDK
             remoteConfigUpdated.Invoke();
         }
 
-		public void IAPPurchaseResultCallback(string data)
+        public void IAPPurchaseResultCallback(string data)
         {
-			var purchaseData = JsonUtility.FromJson<ByteBrewPurchaseData>(data);
+            var purchaseData = JsonUtility.FromJson<ByteBrewPurchaseData>(data);
             purchaseResult.Invoke(purchaseData);
         }
 
@@ -647,6 +649,5 @@ namespace ByteBrewSDK
 #endif
 
         }
-
     }
 }

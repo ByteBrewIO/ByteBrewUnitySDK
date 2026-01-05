@@ -7,14 +7,13 @@
 Real-Time Analytics:
  - Engagement Analytics: Automatically start tracking your game’s key performance indicators such as new user events, DAU, session length, playtime, and retention reporting
  - Custom Filtering: Breakdown and segment your players using custom filters such as; device type, geography, build version, and date ranges
+ 
+ByteBrew Ads:
+ - AI-Layered network built to scale your portfolio with performance targeted growth.
+ - Meet Ctrl, ByteBrew's AI behavioral targeting engine powering ByteBrew Ads; delivering smarter acquistion decisions in real-time to maximize your marketing performance.
 
 Push Notifications:
  - Send Cross-Platform Cloud Notifications to your players around the globe with ByteBrew's Push Notifications.
-
-Player Progression:
- - Game level statistics tracking to breakdown level wins, fails, scores and more.
- - Progression funneling system: Monitor your user's progression and set up custom event funnels to visually track how your player's progression through your games. 
- -Locate key churn points in your games by tracking how long players take to advance through events.
 
 Monetization:
  - Start tracking your game’s in-app purchases with real value using our Receipt Validation tool to turn your game into a business.  
@@ -48,11 +47,14 @@ Remove the current SDK "ByteBrewSDK" from your Assets folder.
 Then download the Unity package from this github to install straight into your project, and re-input your SDK Keys.
 
 
- ## Community
- Join our Community of Developers on Discord [here](https://discord.gg/sAp4f3tJte)! 
-
-
  ## ChangeLog
+### 0.2.0
+ - Update to ByteBrew Unity SDK
+ - Updates:
+    - ByteBrew Ads Update.
+ - Notes:
+    - To Properly update the SDK from a version pre 0.1.3, make sure to remove the whole "ByteBrewSDK" folder and reimport the new SDK, and don't forget to re-input your SDK Keys. From 0.1.3 and forward all you need to do is reimport the SDK. 
+    
 ### 0.1.9
  - Update to ByteBrew Unity SDK
  - Updates:

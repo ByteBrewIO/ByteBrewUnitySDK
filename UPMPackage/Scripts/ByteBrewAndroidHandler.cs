@@ -10,6 +10,7 @@ namespace ByteBrewSDK
 #if UNITY_ANDROID && !(UNITY_EDITOR)
         private static AndroidJavaObject byteBrewHandler;
         private static AndroidJavaObject byteBrewListener;
+        private static AndroidJavaObject byteBrewAds;
         private static AndroidJavaObject byteBrewPushNotifications;
         private static AndroidJavaObject playerActivity;
 
@@ -93,6 +94,178 @@ namespace ByteBrewSDK
                 return null;
             }
         }
+
+        public static void InitializeAds() {
+            AndroidJavaObject context = GetContext();
+            if (context == null) {
+                return;
+            }
+            if (byteBrewAds == null) {
+                byteBrewAds = new AndroidJavaObject("com.bytebrew.bytebrewlibrary.bytebrewads.ByteBrewAds");
+            }
+
+            byteBrewAds.CallStatic("initAds", context);
+        }
+
+        public static bool IsAdsInitialized() {
+            if (byteBrewAds == null) {
+                return false;
+            }
+
+            return byteBrewAds.CallStatic<bool>("isInitialized");
+        }
+
+        public static void SetInterstitialAdEventListener(BBAndroidInterstitialAdEventProxy adEventListener) {
+            if (byteBrewAds == null) {
+                byteBrewAds = new AndroidJavaObject("com.bytebrew.bytebrewlibrary.bytebrewads.ByteBrewAds");
+            }
+            if (adEventListener == null) {
+                return;
+            }
+
+            byteBrewAds.CallStatic("setInterstitialAdEventListener", adEventListener);
+        }
+
+        public static void SetInterstitialAdLoadEventListener(BBAndroidInterstitialAdLoadProxy adLoadEventListener) {
+            if (byteBrewAds == null) {
+                byteBrewAds = new AndroidJavaObject("com.bytebrew.bytebrewlibrary.bytebrewads.ByteBrewAds");
+            }
+            if (adLoadEventListener == null) {
+                return;
+            }
+
+            byteBrewAds.CallStatic("setInterstitialAdLoadEventListener", adLoadEventListener);
+        }
+
+        public static void SetRewardedAdEventListener(BBAndroidRewardedAdEventProxy adEventListener) {
+            if (byteBrewAds == null) {
+                byteBrewAds = new AndroidJavaObject("com.bytebrew.bytebrewlibrary.bytebrewads.ByteBrewAds");
+            }
+            if (adEventListener == null) {
+                return;
+            }
+
+            byteBrewAds.CallStatic("setRewardedAdEventListener", adEventListener);
+        }
+
+        public static void SetRewardedAdLoadEventListener(BBAndroidRewardedAdLoadProxy adLoadEventListener) {
+            if (byteBrewAds == null) {
+                byteBrewAds = new AndroidJavaObject("com.bytebrew.bytebrewlibrary.bytebrewads.ByteBrewAds");
+            }
+            if (adLoadEventListener == null) {
+                return;
+            }
+
+            byteBrewAds.CallStatic("setRewardedAdLoadEventListener", adLoadEventListener);
+        }
+
+        public static void SetAdInitEventListener(BBAndroidAdInitProxy adInitEventListener) {
+            if (byteBrewAds == null) {
+                byteBrewAds = new AndroidJavaObject("com.bytebrew.bytebrewlibrary.bytebrewads.ByteBrewAds");
+            }
+            if (adInitEventListener == null) {
+                return;
+            }
+
+            byteBrewAds.CallStatic("setAdInitEventListener", adInitEventListener);
+        }
+
+        public static void FlushAllAds() {
+            if (byteBrewAds == null) {
+                return;
+            }
+
+            byteBrewAds.CallStatic("flushAllAds");
+        }
+
+        public static bool IsCrossPromoAdLoaded(string adUnitID) {
+            if (byteBrewAds == null) {
+                return false;
+            }
+
+            return byteBrewAds.CallStatic<bool>("isCrossPromoAdLoaded", adUnitID);
+        }
+
+        public static bool IsCrossPromoAdLoaded(string adUnitID, bool ctrlOnly) {
+            if (byteBrewAds == null) {
+                return false;
+            }
+
+            return byteBrewAds.CallStatic<bool>("isCrossPromoAdLoaded", adUnitID, ctrlOnly);
+        }
+
+        public static void LoadInterstitialCrossPromoAd(string adUnitID) {
+            if (byteBrewAds == null) {
+                return;
+            }
+
+            byteBrewAds.CallStatic("loadInterstitialCrossPromoAd", adUnitID);
+        }
+
+        public static void LoadInterstitialCrossPromoAd(string adUnitID, bool ctrlOnly) {
+            if (byteBrewAds == null) {
+                return;
+            }
+
+            byteBrewAds.CallStatic("loadInterstitialCrossPromoAd", adUnitID, ctrlOnly);
+        }
+
+        public static void LoadRewardedCrossPromoAd(string adUnitID) {
+            if (byteBrewAds == null) {
+                return;
+            }
+
+            byteBrewAds.CallStatic("loadRewardedCrossPromoAd", adUnitID);
+        }
+
+        public static void LoadRewardedCrossPromoAd(string adUnitID, bool ctrlOnly) {
+            if (byteBrewAds == null) {
+                return;
+            }
+
+            byteBrewAds.CallStatic("loadRewardedCrossPromoAd", adUnitID, ctrlOnly);
+        }
+
+        public static bool IsAdShowing() {
+            if (byteBrewAds == null) {
+                return false;
+            }
+
+            return byteBrewAds.CallStatic<bool>("isAdShowing");
+        }
+
+        public static void ShowInterstitialCrossPromoAd(string adUnitID) {
+            if (byteBrewAds == null) {
+                return;
+            }
+
+            byteBrewAds.CallStatic("showInterstitialCrossPromoAd", adUnitID);
+        }
+
+        public static void ShowInterstitialCrossPromoAd(string adUnitID, bool ctrlOnly) {
+            if (byteBrewAds == null) {
+                return;
+            }
+
+            byteBrewAds.CallStatic("showInterstitialCrossPromoAd", adUnitID, ctrlOnly);
+        }
+
+        public static void ShowRewardedCrossPromoAd(string adUnitID) {
+            if (byteBrewAds == null) {
+                return;
+            }
+
+            byteBrewAds.CallStatic("showRewardedCrossPromoAd", adUnitID);
+        }
+
+        public static void ShowRewardedCrossPromoAd(string adUnitID, bool ctrlOnly) {
+            if (byteBrewAds == null) {
+                return;
+            }
+
+            byteBrewAds.CallStatic("showRewardedCrossPromoAd", adUnitID, ctrlOnly);
+        }
+
 
         public static void DisableTracking()
         {
@@ -211,10 +384,7 @@ namespace ByteBrewSDK
 
             return dictionaryStr;
         }
-        #endif
+#endif
     }
 
-
 }
-
-

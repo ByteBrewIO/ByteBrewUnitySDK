@@ -25,5 +25,11 @@
         <repository>https://maven.google.com</repository>
       </repositories>
     </androidPackage>
+    <androidPackage spec="com.google.android.exoplayer:exoplayer:2.19.1">
+      <repositories>
+        <repository>https://maven.google.com</repository>
+        <repository>https://repo1.maven.org/maven2</repository>
+      </repositories>
+    </androidPackage>
   </androidPackages>
 </dependencies>

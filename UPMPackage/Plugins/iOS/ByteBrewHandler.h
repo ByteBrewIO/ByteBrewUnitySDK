@@ -14,4 +14,5 @@
 +(void) SignalValidatedPurchaseResults:(const char *) validationResult;
 +(void) SignalSDKIsInitialized;
 +(void) LowLevelPushStart;
++(BOOL) IsFinalInitialized;
 @end

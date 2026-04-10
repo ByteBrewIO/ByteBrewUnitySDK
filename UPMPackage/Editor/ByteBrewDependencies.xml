@@ -5,7 +5,7 @@
       <repository>https://repo.maven.apache.org/maven2</repository>
       <repository>https://maven.google.com</repository>
     </repositories>
-    <androidPackage spec="com.android.support:appcompat-v7:28.0.0">
+    <androidPackage spec="androidx.appcompat:appcompat:1.1.0">
       <repositories>
         <repository>https://maven.google.com</repository>
       </repositories>
@@ -25,7 +25,13 @@
         <repository>https://maven.google.com</repository>
       </repositories>
     </androidPackage>
-    <androidPackage spec="com.google.android.exoplayer:exoplayer:2.19.1">
+    <androidPackage spec="androidx.media3:media3-exoplayer:1.4.1">
+      <repositories>
+        <repository>https://maven.google.com</repository>
+        <repository>https://repo1.maven.org/maven2</repository>
+      </repositories>
+    </androidPackage>
+    <androidPackage spec="androidx.media3:media3-ui:1.4.1">
       <repositories>
         <repository>https://maven.google.com</repository>
         <repository>https://repo1.maven.org/maven2</repository>

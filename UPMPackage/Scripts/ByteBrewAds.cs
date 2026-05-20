@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using UnityEngine;
 
 namespace ByteBrewSDK
@@ -257,6 +258,26 @@ namespace ByteBrewSDK
 #else
             Debug.Log("[ByteBrewAds] ShowRewardedCrossPromoAd: Not a mobile runtime.");
 #endif
+        }
+
+        static readonly ConcurrentQueue<Action> _deferredAdActionQueue = new ConcurrentQueue<Action>();
+
+        internal static void DrainDeferredAdActions()
+        {
+            if (_deferredAdActionQueue.IsEmpty)
+            {
+                return;
+            }
+
+            while (_deferredAdActionQueue.TryDequeue(out Action deferredAction))
+            {
+                deferredAction?.Invoke(); 
+            }
+        }
+
+        public static void DeferActionForMainThread(Action adAction)
+        {
+            _deferredAdActionQueue.Enqueue(adAction);
         }
 
         // ========= Internal raise helpers (called by platform glue) =========
